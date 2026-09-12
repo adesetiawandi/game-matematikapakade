@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quest: High School Edition</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- KaTeX untuk Render Simbol Matematika/LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="glass-container">
+        <!-- Header -->
+        <header>
+            <h1>⚡ MATH QUEST: DIMENSIONS</h1>
+            <p>Uji Kemampuan Matematika SMA Kelas 10–12!</p>
+        </header>
+
+        <!-- Screen 1: Form Start -->
+        <section id="start-screen" class="active-screen">
+            <div class="input-group">
+                <label for="player-name">Nama / Nickname:</label>
+                <input type="text" id="player-name" placeholder="Masukkan nama kamu..." required>
+            </div>
+            
+            <div class="input-group">
+                <label for="grade-select">Pilih Tingkat Kelas:</label>
+                <select id="grade-select">
+                    <option value="10">Kelas 10 (Eksponen, Logaritma, Trigonometri)</option>
+                    <option value="11" selected>Kelas 11 (Fungsi Komposisi, Transformasi & Geometri Lingkaran)</option>
+                    <option value="12">Kelas 12 (Limit, Turunan, Integral)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" onclick="startGame()">Mulai Petualangan 🚀</button>
+        </section>
+
+        <!-- Screen 2: Game Board -->
+        <section id="game-screen" class="hidden">
+            <div class="game-stats">
+                <div class="stat-box">Skor: <span id="score">0</span></div>
+                <div class="stat-box">Waktu: <span id="timer">30</span>s</div>
+                <div class="stat-box">Streak: <span id="streak">x1</span></div>
+            </div>
+
+            <div class="question-card">
+                <span id="topic-badge" class="badge">Matematika</span>
+                <h2 id="question-text">Soal akan muncul di sini...</h2>
+            </div>
+
+            <div id="options-grid" class="options-grid"></div>
+        </section>
+
+        <!-- Screen 3: Hasil & Leaderboard -->
+        <section id="result-screen" class="hidden">
+            <h2>🎉 Permainan Selesai!</h2>
+            <p>Skor Akhir Kamu: <strong id="final-score">0</strong></p>
+            
+            <div class="leaderboard-section">
+                <h3>🏆 Leaderboard Top Players</h3>
+                <ul id="leaderboard-list">
+                    <li>Memuat papan peringkat...</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" onclick="restartGame()">Main Lagi 🔄</button>
+        </section>
+    </div>
+
+    <!-- Panggil script dengan urutan yang BENAR -->
+    <script src="supabaseClient.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
